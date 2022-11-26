@@ -1,1 +1,58 @@
-<h1>SentiMeal</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default">
+
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+
+</head>
+<body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+    >
+    // Initialize and add the map
+    function initMap() {
+    // The location of graz
+    const graz = { lat: 47.076668, lng: 15.421371 };
+    // The map, centered at graz
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: graz,
+    });
+    // The marker, positioned at graz
+    const marker = new google.maps.Marker({
+        position: graz,
+        map: map,
+    });
+    }
+
+    /*function databasecommunication() {
+        let token = '{{ csrf_token }}';
+        let formData = new FormData();
+        formData.append('csrfmiddlewaretoken', token);
+    }*/
+    //window.location.initMap = initMap;
+    //window.initMap = initMap;
+    </script>
+</body>
+</html>
